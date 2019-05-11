@@ -6,9 +6,6 @@ import java.util.ArrayList;
 import static com.github.blockchain.StringUtils.getStringFromKey;
 /**
  *
- *
- *
- *
  * Read this to understand the concept behind Transactions
  * https://en.bitcoin.it/wiki/Coin_analogy
  *
@@ -29,8 +26,7 @@ public class Transaction {
     public Transaction(PublicKey sender,
                        PublicKey receiver,
                        float value,
-                       ArrayList<TransactionInput> inputs
-                       ) {
+                       ArrayList<TransactionInput> inputs) {
 
         this.sender = sender;
         this.receiver = receiver;

@@ -5,10 +5,9 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 /**
- * Unit test for simple ChainFirst.
+ * Unit test for simple Starter.
  */
-public class ChainFirstTest
-{
+public class StarterTest {
     /**
      * Rigorous Test :-)
      */

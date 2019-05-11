@@ -5,27 +5,27 @@ import java.security.PublicKey;
 public class TransactionOutput {
 
     private String id;
-    private PublicKey receipient;
+    private PublicKey recipient;
     private float value;
     private String parentTransactionId;
 
-    public TransactionOutput(String id, PublicKey receipient, float value, String parentTransactionId) {
+    public TransactionOutput(String id, PublicKey recipient, float value, String parentTransactionId) {
         this.id = id;
-        this.receipient = receipient;
+        this.recipient = recipient;
         this.value = value;
         this.parentTransactionId = parentTransactionId;
     }
 
     public boolean isMine( PublicKey publicKey){
-        return  ( publicKey == receipient );
+        return  ( publicKey == recipient);
     }
 
     public String getId() {
         return id;
     }
 
-    public PublicKey getReceipient() {
-        return receipient;
+    public PublicKey getRecipient() {
+        return recipient;
     }
 
     public float getValue() {
