@@ -29,16 +29,13 @@ public class Transaction {
     public Transaction(PublicKey sender,
                        PublicKey receiver,
                        float value,
-                       byte[] signature,
-                       ArrayList<TransactionInput> inputs,
-                       ArrayList<TransactionOutput> outputs) {
+                       ArrayList<TransactionInput> inputs
+                       ) {
 
         this.sender = sender;
         this.receiver = receiver;
         this.value = value;
-        this.signature = signature;
         this.inputs = inputs;
-        this.outputs = outputs;
     }
 
     public String calculateHash(){
@@ -53,9 +50,38 @@ public class Transaction {
         String data = StringUtils.getStringFromKey(sender) + StringUtils.getStringFromKey(receiver) + Float.toString(value)	;
         signature = StringUtils.createSignature(privateKey,data);
     }
+
     //Verifies the signed data hasn't been tampered with
     public boolean verifySignature() {
         String data = StringUtils.getStringFromKey(sender) + StringUtils.getStringFromKey(receiver) + Float.toString(value)	;
         return StringUtils.verifyECDSASig(sender, data, signature);
+    }
+
+    public boolean canProcessTransaction() throws Exception {
+        if( verifySignature() == false ){
+            return false;
+        }
+
+        // the transactions must be unspent.
+        // Since, wallet creates the transaction, it is the responsibility of the wallet to send only UTXOs
+        if( getTotalInputUTXOs() < value ){
+            throw new Exception("The transaction value is less than the total UTXOs");
+        }
+
+        float leftover = getTotalInputUTXOs() - value;
+
+        // split the
+
+        return true;
+    }
+
+    public float getTotalInputUTXOs(){
+        float total = 0;
+
+        for( TransactionInput input: inputs ){
+            total = total + input.getUTXO().getValue();
+        }
+
+        return total;
     }
 }

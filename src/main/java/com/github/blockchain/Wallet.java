@@ -36,6 +36,18 @@ public class Wallet {
         publicKey = keyPair.getPublic();
     }
 
+    /**
+     * This constructor automatically identifies "inputs" based on value
+     *
+     * @param value
+     * @param receiver
+     * @return
+     */
+    public Transaction createTransaction( float value, PublicKey receiver){
+        Transaction transaction = new Transaction( getPublicKey(),receiver, value, null );
+        return transaction;
+    }
+
     public PublicKey getPublicKey() {
         return publicKey;
     }

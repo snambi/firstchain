@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * Hello world!
  *
  */
-public class FirstChain {
+public class ChainFirst {
 
     public static ArrayList<Block> blockchain = new ArrayList<Block>();
     public static int difficulty = 5;
