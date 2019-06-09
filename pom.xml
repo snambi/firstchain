@@ -60,6 +60,10 @@
         <plugin>
           <artifactId>maven-compiler-plugin</artifactId>
           <version>3.8.0</version>
+          <configuration>
+            <fork>true</fork>
+            <compilerArgument>-XDignore.symbol.file</compilerArgument>
+          </configuration>
         </plugin>
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
@@ -88,15 +92,17 @@
         </plugin>
       </plugins>
     </pluginManagement>
+
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-          <source>8</source>
-          <target>8</target>
+          <release>11</release>
         </configuration>
       </plugin>
     </plugins>
+
+
   </build>
 </project>
